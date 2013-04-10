@@ -28,7 +28,7 @@ case `uname` in
 	exit -1
 esac
 
-GITREPO=${GITREPO:-"git://github.com/mozilla-b2g/b2g-manifest"}
+GITREPO=${GITREPO:-"git://github.com/bhat10000/b2g-manifest"}
 BRANCH=${BRANCH:-v1-train}
 
 GIT_TEMP_REPO="tmp_manifest_repo"
@@ -90,6 +90,11 @@ case "$1" in
 	repo_sync $1
 	;;
 
+"beaglebone")
+	echo DEVICE=beaglebone >> .tmp-config &&
+	repo_sync $1
+	;;
+
 "emulator")
 	echo DEVICE=generic >> .tmp-config &&
 	echo LUNCH=full-eng >> .tmp-config &&
@@ -118,6 +123,7 @@ case "$1" in
 	echo - hamachi
 	echo - tara
 	echo - pandaboard
+	echo - beaglebone
 	echo - emulator
 	echo - emulator-x86
 	exit -1
